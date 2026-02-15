@@ -1,19 +1,19 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
+        if (s.length() != t.length()) return false;
 
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
+        int arr[26] = {0};
 
         for (int i = 0; i < s.length(); i++) {
-            if (s[i] != t[i]) {
-                return false;
-            }
+            arr[s[i] - 'a'] += 1;
+            arr[t[i] - 'a'] -= 1;
         }
 
-        return true;   
+        for (int check : arr) {
+            if (check != 0) return false;
+        }
+
+        return true;
     }
 };
