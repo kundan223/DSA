@@ -42,13 +42,13 @@ public:
 
             ListNode* nextGroupStart = kth->next;
 
-            // detach
+         
             kth->next = NULL;
 
-            // reverse
+  
             ListNode* newHead = reverseLL(prevGroupEnd->next, k);
 
-            // reconnect
+       
             ListNode* oldHead = prevGroupEnd->next;
             prevGroupEnd->next = newHead;
             oldHead->next = nextGroupStart;
