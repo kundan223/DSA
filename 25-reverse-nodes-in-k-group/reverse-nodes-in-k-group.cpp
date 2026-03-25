@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    // Reverse k nodes and return new head
+   
     ListNode* reverseLL(ListNode* head, int k) {
         ListNode* prev = NULL;
         ListNode* curr = head;
@@ -19,7 +19,6 @@ public:
         return prev;
     }
 
-    // Helper to check if k nodes exist
     ListNode* getKthNode(ListNode* curr, int k) {
         while (curr != NULL && k > 1) {
             curr = curr->next;
