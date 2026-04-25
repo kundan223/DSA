@@ -8,14 +8,13 @@ public:
                 st.top().second++;
                 
                 if (st.top().second == k) {
-                    st.pop(); // remove k duplicates
+                    st.pop(); 
                 }
             } else {
                 st.push({c, 1});
             }
         }
-        
-        // rebuild string
+
         string result = "";
         
         while (!st.empty()) {
