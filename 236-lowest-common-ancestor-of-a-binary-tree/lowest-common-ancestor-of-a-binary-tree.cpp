@@ -1,44 +1,29 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
 
-    unordered_map<TreeNode*, TreeNode*> parent;
-    unordered_map<TreeNode*, int> level;
-
-    void dfs(TreeNode* root, TreeNode* par, int lvl) {
-
-        if (root == NULL) {
-            return;
-        }
-
-        parent[root] = par;
-        level[root] = lvl;
-
-        dfs(root->left, root, lvl + 1);
-        dfs(root->right, root, lvl + 1);
-    }
-
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 
-        dfs(root, NULL, 0);
-
-        int lp = level[p];
-        int lq = level[q];
-
-        while (lp > lq) {
-            p = parent[p];
-            lp--;
+        if (root == NULL || root == p || root == q) {
+            return root;
         }
 
-        while (lq > lp) {
-            q = parent[q];
-            lq--;
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
+        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+
+        if (left != NULL && right != NULL) {
+            return root;
         }
 
-        while (p != q) {
-            p = parent[p];
-            q = parent[q];
-        }
-
-        return p;
+        return (left != NULL) ? left : right;
     }
 };
