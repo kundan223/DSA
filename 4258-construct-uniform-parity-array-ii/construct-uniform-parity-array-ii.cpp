@@ -11,13 +11,10 @@ public:
             }
         }
 
-        // No odd numbers means everything is already even
         if (min_odd == INT_MAX) {
             return true;
         }
 
-        // The smallest odd number itself cannot become
-        // a positive even number
         for (int i = 0; i < size; i++) {
 
             if (nums1[i] % 2 == 1) {
@@ -41,7 +38,6 @@ public:
             }
         }
 
-        // No odd number means we cannot make even numbers odd
         if (min_odd == INT_MAX) {
             return false;
         }
